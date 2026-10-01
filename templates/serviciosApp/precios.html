@@ -133,7 +133,13 @@
                         <td>{{ servicio.id }}</td>
                         <td class="service-name">{{ servicio.nombre }}</td>
                         <td>{{ servicio.disponibilidad }}</td>
-                        <td class="price-tag">${{ servicio.precio }}</td>
+                        <td class="price-tag">
+                            {% if servicio.precio_disponible %}
+                            {{ servicio.moneda }} {{ servicio.precio }}
+                            {% else %}
+                            Precio no informado
+                            {% endif %}
+                        </td>
                     </tr>
                     {% empty %}
                     <tr>

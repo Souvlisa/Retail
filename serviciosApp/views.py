@@ -1,5 +1,6 @@
 import json
 from pathlib import Path
+from django.db.models import Exists, F, OuterRef
 from django.http import HttpResponse
 from django.shortcuts import render
 from .models import PrecioServicio, Servicio
@@ -8,14 +9,33 @@ from .models import PrecioServicio, Servicio
 def cargar_datos():
     archivo = Path(__file__).resolve().parent / "datos.json"
     with open(archivo, "r", encoding="utf-8") as archivo_json:
-        return json.load(archivo_json)
+        datos = json.load(archivo_json)
+
+    servicios = []
+    for registro in datos:
+        campos = registro.get("fields", registro)
+        servicio = {"id": registro.get("pk", campos.get("id")), **campos}
+        servicio["precio_disponible"] = campos.get("precio") is not None
+        servicios.append(servicio)
+
+    return servicios
+
+
+def obtener_servicios_con_precios():
+    precios = PrecioServicio.objects.filter(servicio_id=OuterRef("pk"))
+    return Servicio.objects.annotate(
+        precio=F("precioservicio__precio"),
+        moneda=F("precioservicio__moneda"),
+        precio_disponible=Exists(precios),
+    ).order_by("id")
+
 
 def servicios(request):
-    datos = cargar_datos()
+    datos = obtener_servicios_con_precios()
     return render(request, 'serviciosApp/servicios.html', {'servicios': datos})
 
 def precios(request):
-    datos = cargar_datos()
+    datos = obtener_servicios_con_precios()
     return render(request, 'serviciosApp/precios.html', {'servicios': datos})
 
 def servicios_old(request):

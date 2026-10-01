@@ -1,23 +1,29 @@
 [
     {
-        "id": 1,
-        "nombre": "Diseño Web",
-        "descripcion": "Creamos sitios web modernos y adaptables.",
-        "precio": 150000,
-        "disponibilidad":"Inmediata"
-       },
-    {
-        "id": 2,
-        "nombre": "Desarrollo Django",
-        "descripcion": "Desarrollamos aplicaciones web utilizando Django.",
-        "precio": 250000,
-        "disponibilidad":"Por confirmar"
+        "model": "serviciosApp.servicio",
+        "pk": 1,
+        "fields": {
+            "nombre": "Diseño Web",
+            "descripcion": "Creamos sitios web modernos y adaptables.",
+            "disponibilidad":"Inmediata"
+       }
     },
     {
-        "id": 3,
-        "nombre": "Mantenimiento Web",
-        "descripcion": "Mantenemos y actualizamos tu sitio web.",
-        "precio": 100000,
-        "disponibilidad":"Inmediata"
+        "model": "serviciosApp.servicio",
+        "pk": 2,
+        "fields": {
+            "nombre": "Desarrollo Django",
+            "descripcion": "Desarrollamos aplicaciones web utilizando Django.",
+            "disponibilidad":"Por confirmar"
+        }
+    },
+    {
+        "model": "serviciosApp.servicio",
+        "pk": 3,
+        "fields": {
+            "nombre": "Mantenimiento Web",
+            "descripcion": "Mantenemos y actualizamos tu sitio web.",
+            "disponibilidad":"Inmediata"
+        }
     }
 ]
