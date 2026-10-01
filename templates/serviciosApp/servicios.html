@@ -1,0 +1,135 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Servicios</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <style>
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 40%, #334155 100%);
+            font-family: Arial, Helvetica, sans-serif;
+            color: #e2e8f0;
+        }
+
+        .services-page {
+            width: min(1000px, 92%);
+            padding: 2rem 0;
+        }
+
+        .services-card {
+            background: rgba(15, 23, 42, 0.82);
+            border: 1px solid rgba(148, 163, 184, 0.35);
+            border-radius: 20px;
+            padding: 2.5rem 2rem;
+            box-shadow: 0 24px 60px rgba(15, 23, 42, 0.45);
+        }
+
+        .services-badge {
+            display: inline-block;
+            background: rgba(56, 189, 248, 0.12);
+            border: 1px solid rgba(125, 211, 252, 0.55);
+            color: #7dd3fc;
+            border-radius: 999px;
+            padding: 0.45rem 0.9rem;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+
+        .services-card h1 {
+            margin: 0 0 1.5rem;
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            color: #f8fafc;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.2rem;
+        }
+
+        .service-item {
+            background: rgba(30, 41, 59, 0.8);
+            border: 1px solid rgba(148, 163, 184, 0.2);
+            border-radius: 16px;
+            padding: 1.2rem;
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+        }
+
+        .service-item h2 {
+            margin: 0 0 0.75rem;
+            font-size: 1.2rem;
+            color: #f8fafc;
+        }
+
+        .service-item p {
+            margin: 0.35rem 0;
+            color: #cbd5e1;
+            line-height: 1.6;
+        }
+
+        .service-item strong {
+            color: #f8fafc;
+        }
+
+        .service-price {
+            display: inline-block;
+            margin-top: 0.8rem;
+            color: #7dd3fc;
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 1.5rem;
+            background: linear-gradient(135deg, #f59e0b 0%, #f97316 100%);
+            color: #fff;
+            text-decoration: none;
+            padding: 0.8rem 1.2rem;
+            border-radius: 10px;
+            font-weight: 700;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            box-shadow: 0 12px 20px rgba(249, 115, 22, 0.28);
+        }
+
+        .back-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 14px 24px rgba(249, 115, 22, 0.36);
+        }
+    </style>
+</head>
+<body>
+    <div class="services-page">
+        <div class="services-card">
+            <span class="services-badge">Nuestros servicios</span>
+            <h1>Soluciones digitales para crecer</h1>
+
+            <div class="services-grid">
+                {% for servicio in servicios %}
+                <article class="service-item">
+                    <h2>{{ servicio.nombre }}</h2>
+                    <p><strong>ID:</strong> {{ servicio.id }}</p>
+                    <p>{{ servicio.descripcion }}</p>
+                    <p><strong>Disponibilidad:</strong> {{ servicio.disponibilidad }}</p>
+                    <span class="service-price">${{ servicio.precio }}</span>
+                </article>
+                {% empty %}
+                <p>No hay servicios disponibles por el momento.</p>
+                {% endfor %}
+            </div>
+
+            <a class="back-link" href="/">Volver al menú principal</a>
+        </div>
+    </div>
+</body>
+</html>

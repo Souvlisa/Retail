@@ -1,0 +1,48 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiénes Somos</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <main class="info-page">
+        <section class="info-card">
+            <span class="info-badge">Nuestra historia</span>
+            <h1>Quiénes Somos</h1>
+            <p>
+                Somos una empresa comprometida con ofrecer soluciones modernas,
+                accesibles y de calidad para nuestros clientes. Trabajamos con pasión,
+                innovación y atención personalizada en cada proyecto.
+            </p>
+            <p>
+                Nuestra misión es crear experiencias que conecten a las personas con
+                servicios útiles, confiables y diseñados para facilitar la vida diaria.
+            </p>
+
+            <div class="info-highlights">
+                <div>
+                    <strong>+10 años</strong>
+                    <span>de experiencia</span>
+                </div>
+                <div>
+                    <strong>100%</strong>
+                    <span>orientado a clientes</span>
+                </div>
+                <div>
+                    <strong>24/7</strong>
+                    <span>soporte y atención</span>
+                </div>
+            </div>
+
+            <div class="info-visual">
+                <img src="{% static 'imagenes/estaticas/webpay.png' %}" alt="Webpay" class="webpay-image" />
+            </div>
+
+            <a class="back-link" href="../">Volver</a>
+        </section>
+    </main>
+</body>
+</html>

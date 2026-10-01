@@ -1,0 +1,21 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Retail</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <div class="menu-container">
+        <h1>Menu</h1>
+        <img class="menu-image" src="{% static 'imagenes/estaticas/django.jpg' %}" alt="Imagen" />
+        <ul class="menu-list">
+            <li><a href="informacion">Información</a></li>
+            <li><a href="servicios">Servicios</a></li>
+            <li><a href="servicios/precios">Precios</a></li>
+        </ul>
+    </div>
+</body>
+</html>

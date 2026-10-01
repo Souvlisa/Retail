@@ -1,0 +1,150 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Precios</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <style>
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 40%, #334155 100%);
+            font-family: Arial, Helvetica, sans-serif;
+            color: #e2e8f0;
+        }
+
+        .pricing-page {
+            width: min(1000px, 92%);
+            padding: 2rem 0;
+        }
+
+        .pricing-card {
+            background: rgba(15, 23, 42, 0.82);
+            border: 1px solid rgba(148, 163, 184, 0.35);
+            border-radius: 20px;
+            padding: 2.5rem 2rem;
+            box-shadow: 0 24px 60px rgba(15, 23, 42, 0.45);
+        }
+
+        .pricing-badge {
+            display: inline-block;
+            background: rgba(56, 189, 248, 0.12);
+            border: 1px solid rgba(125, 211, 252, 0.55);
+            color: #7dd3fc;
+            border-radius: 999px;
+            padding: 0.45rem 0.9rem;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+
+        .pricing-card h1 {
+            margin: 0 0 1.5rem;
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            color: #f8fafc;
+        }
+
+        .pricing-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+            overflow: hidden;
+            border-radius: 14px;
+        }
+
+        .pricing-table th,
+        .pricing-table td {
+            padding: 1rem 0.9rem;
+            text-align: left;
+            border-bottom: 1px solid rgba(148, 163, 184, 0.2);
+        }
+
+        .pricing-table thead th {
+            background: rgba(30, 41, 59, 0.9);
+            color: #f8fafc;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .pricing-table tbody td {
+            color: #cbd5e1;
+        }
+
+        .pricing-table tbody tr:hover {
+            background: rgba(30, 41, 59, 0.55);
+        }
+
+        .service-name {
+            color: #f8fafc;
+            font-weight: 700;
+        }
+
+        .price-tag {
+            color: #7dd3fc;
+            font-weight: 700;
+            font-size: 1.05rem;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 1.5rem;
+            background: linear-gradient(135deg, #f59e0b 0%, #f97316 100%);
+            color: #fff;
+            text-decoration: none;
+            padding: 0.8rem 1.2rem;
+            border-radius: 10px;
+            font-weight: 700;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            box-shadow: 0 12px 20px rgba(249, 115, 22, 0.28);
+        }
+
+        .back-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 14px 24px rgba(249, 115, 22, 0.36);
+        }
+    </style>
+</head>
+<body>
+    <div class="pricing-page">
+        <div class="pricing-card">
+            <span class="pricing-badge">Tarifas</span>
+            <h1>Precios de nuestros servicios</h1>
+
+            <table class="pricing-table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Servicio</th>
+                        <th>Disponibilidad</th>
+                        <th>Precio</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for servicio in servicios %}
+                    <tr>
+                        <td>{{ servicio.id }}</td>
+                        <td class="service-name">{{ servicio.nombre }}</td>
+                        <td>{{ servicio.disponibilidad }}</td>
+                        <td class="price-tag">${{ servicio.precio }}</td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="4">No hay servicios disponibles por el momento.</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+            <a class="back-link" href="/">Volver al menú principal</a>
+        </div>
+    </div>
+</body>
+</html>

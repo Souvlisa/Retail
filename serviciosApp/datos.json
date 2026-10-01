@@ -1,0 +1,23 @@
+[
+    {
+        "id": 1,
+        "nombre": "Diseño Web",
+        "descripcion": "Creamos sitios web modernos y adaptables.",
+        "precio": 150000,
+        "disponibilidad":"Inmediata"
+       },
+    {
+        "id": 2,
+        "nombre": "Desarrollo Django",
+        "descripcion": "Desarrollamos aplicaciones web utilizando Django.",
+        "precio": 250000,
+        "disponibilidad":"Por confirmar"
+    },
+    {
+        "id": 3,
+        "nombre": "Mantenimiento Web",
+        "descripcion": "Mantenemos y actualizamos tu sitio web.",
+        "precio": 100000,
+        "disponibilidad":"Inmediata"
+    }
+]
